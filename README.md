@@ -12,6 +12,7 @@ TODO
 - [ ] unit test
 - [ ] detail ui compose
 - [ ] darkTheme support in compose
+- [ ] loading Progressbar
 
 Screenshots
 ----------------- 
