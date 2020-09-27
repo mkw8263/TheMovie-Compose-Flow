@@ -27,8 +27,7 @@ ext.versions = [
 
         coroutinesVersion       : '1.3.9',
 
-        accompanistCoilVersion  : '0.2.1',
-        composableCoil          : '1.0.0',
+        composableCoil          : '0.2.1',
         timberVersion           : '4.7.1',
 
         truthVersion            : '1.0.1',

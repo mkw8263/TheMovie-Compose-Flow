@@ -81,7 +81,7 @@ dependencies {
     androidTestImplementation "com.google.dagger:hilt-android-testing:$versions.daggerHiltCoreVersion"
     kaptAndroidTest "com.google.dagger:hilt-compiler:$versions.daggerHiltCoreVersion"
 
-    implementation "jp.wasabeef.composable:coil:$versions.composableCoil"
+    implementation "dev.chrisbanes.accompanist:accompanist-coil:$versions.composableCoil"
 
     implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttpVersion"
     implementation "com.squareup.retrofit2:converter-gson:$versions.retrofitVersion"

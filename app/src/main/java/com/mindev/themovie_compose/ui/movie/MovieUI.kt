@@ -4,20 +4,23 @@ import android.content.Context
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.RowScope.align
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.ripple.RippleIndication
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.mindev.themovie_compose.ui.entity.MovieViewResult
 import com.mindev.themovie_compose.ui.main.MainMovieRouter
 import com.mindev.themovie_compose.ui.main.onClickMovieUI
-import jp.wasabeef.composable.coil.CoilImage
+import dev.chrisbanes.accompanist.coil.CoilImage
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
@@ -54,7 +57,7 @@ fun MovieCardUI(movie: MovieViewResult, context: Context) = Card(
             .align(Alignment.CenterVertically)
     ) {
         Box(modifier = Modifier.align(alignment = Alignment.CenterHorizontally)) {
-            NetworkImage(movie)
+            MovieNetworkImage(movie)
         }
         Spacer(Modifier.preferredHeight(8.dp))
         Text(
@@ -69,7 +72,12 @@ fun MovieCardUI(movie: MovieViewResult, context: Context) = Card(
 }
 
 @Composable
-fun NetworkImage(entity: MovieViewResult) = CoilImage(
-    model = "https://image.tmdb.org/t/p/w500/" + entity.poster_path,
-    modifier = Modifier.preferredWidth(200.dp).height(200.dp),
+fun MovieNetworkImage(entity: MovieViewResult) = CoilImage(
+    data = "https://image.tmdb.org/t/p/w500/" + entity.poster_path,
+    contentScale = ContentScale.Crop,
+    modifier = Modifier.width(240.dp)
+        .height(240.dp)
+        .wrapContentSize(Alignment.Center)
+        .aspectRatio(1.0f)
+        .clip(CircleShape)
 )

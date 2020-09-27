@@ -41,7 +41,7 @@ fun movieMain(viewModel: MainViewModel) {
                 Box(modifier = Modifier.weight(0.7f), children = { MovieUI(movieItems) })
                 Box(
                     modifier = Modifier.weight(0.2f),
-                    children = { PersonUI(personItems, viewModel) })
+                    children = { PersonUI(personItems) })
             }
         }
     }
