@@ -33,7 +33,7 @@ Architecture, Languages ans libraries used
 - Dagger2 & Hilt
 
 
-architecture
+Architecture
 -----------------
 ![image](https://github.com/mkw8263/TheMovie-Compose-Flow/blob/master/Screen%20Shot%202020-09-27%20at%202.04.34%20PM.png)
 
