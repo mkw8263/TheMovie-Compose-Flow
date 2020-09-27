@@ -12,6 +12,8 @@ TODO
 - [ ] unit test
 - [ ] detail ui compose
 - [ ] darkTheme support in compose
+- [ ] navigator in compose
+- [ ] detail moview Activity UI
 - [ ] loading Progressbar
 
 Screenshots
