@@ -12,13 +12,15 @@ TODO
 - [ ] unit test
 - [ ] detail ui compose
 - [ ] darkTheme support in compose
+- [ ] navigator in compose
+- [ ] detail moview Activity UI
 - [ ] loading Progressbar
 
 Screenshots
 ----------------- 
 <p align="center">
-<img src="https://github.com/mkw8263/TheMovie-Compose-Flow/blob/master/compose_movie%20(1).png" width="32%"/>
-<img src="https://github.com/mkw8263/TheMovie-Compose-Flow/blob/master/compose_person.png" width="32%"/>
+<img src="https://github.com/mkw8263/TheMovie-Compose-Flow/blob/master/compose-movie.png"/>
+<img src="https://github.com/mkw8263/TheMovie-Compose-Flow/blob/master/compose-profile.png"/>
 </p>
 
 Architecture, Languages ans libraries used
