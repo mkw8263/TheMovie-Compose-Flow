@@ -2,13 +2,15 @@ package com.mindev.themovie_compose.ui.main
 
 import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ConstraintLayout
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ColumnScope.align
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Switch
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -28,20 +30,37 @@ fun movieMain(viewModel: MainViewModel) {
     val isMovieProgress: Boolean by viewModel.isMovieProgress.observeAsState(false)
     val isMoviePersonProgress: Boolean by viewModel.isMoviePersonProgress.observeAsState(false)
 
-    ConstraintLayout {
-        Scaffold(backgroundColor = Color.Black) {
+    Scaffold(backgroundColor = Color.Black) {
+        ConstraintLayout(modifier = Modifier.fillMaxSize()) {
             Column {
-                Box(modifier = Modifier.weight(0.1f), children = {
-                    Text(
-                        text = "MinDev - The Movie Compose Demo",
-                        modifier = Modifier.padding(start = 8.dp, top = 36.dp, bottom = 16.dp),
-                        style = TextStyle(color = Color.White, fontSize = TextUnit.Sp(18))
-                    )
-                })
-                Box(modifier = Modifier.weight(0.7f), children = { MovieUI(movieItems) })
                 Box(
-                    modifier = Modifier.weight(0.2f),
-                    children = { PersonUI(personItems) })
+                    modifier = Modifier.weight(0.1f)
+                        .padding(start = 8.dp, top = 36.dp, bottom = 16.dp), children = {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                text = "MinDev - The Movie Compose Demo",
+                                style = TextStyle(color = Color.White, fontSize = TextUnit.Sp(18))
+                            )
+                            Switch(
+                                checked = true,
+                                onCheckedChange = {},
+                                color = Color.White
+                            )
+                        }
+                    },
+                    gravity = Alignment.Center
+                )
+                Box(
+                    gravity = Alignment.Center,
+                    modifier = Modifier.weight(0.7f),
+                    children = { MovieUI(movieItems, isMovieProgress) })
+                Box(
+                    modifier = Modifier.weight(0.2f)
+                        .align(alignment = Alignment.CenterHorizontally),
+                    children = { PersonUI(personItems, isMoviePersonProgress) })
             }
         }
     }

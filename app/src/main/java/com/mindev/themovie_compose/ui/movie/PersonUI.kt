@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.RowScope.align
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ripple.RippleIndication
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,32 +27,41 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 @Composable
-fun PersonUI(personItems: List<MoviePersonView>) {
-    val context = ContextAmbient.current
-    ScrollableRow(modifier = Modifier.align(Alignment.Bottom).fillMaxWidth()) {
-        personItems.map {
-            Column(
-                modifier = Modifier.clickable(
-                    onClick = {
-                        onClickMovieUI(
-                            MainMovieRouter.DetailProfile(it),
-                            context
+fun PersonUI(personItems: List<MoviePersonView>, isMoviePersonProgress: Boolean) {
+    ConstraintLayout {
+        val context = ContextAmbient.current
+        val body = createRef()
+        if(isMoviePersonProgress){
+            CircularProgressIndicator(
+                color = Color.White
+            )
+        }else{
+            ScrollableRow(modifier = Modifier.align(Alignment.Bottom).fillMaxWidth()) {
+                personItems.map {
+                    Column(
+                        modifier = Modifier.clickable(
+                            onClick = {
+                                onClickMovieUI(
+                                    MainMovieRouter.DetailProfile(it),
+                                    context
+                                )
+                            },
+                            indication = RippleIndication(color = Color.White)
+                        ), horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        ProfileImage(it)
+                        Text(
+                            overflow = TextOverflow.Clip,
+                            text = it.name,
+                            style = TextStyle(
+                                color = Color.White,
+                                fontSize = TextUnit.Sp(8)
+                            )
                         )
-                    },
-                    indication = RippleIndication(color = Color.White)
-                ), horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                ProfileImage(it)
-                Text(
-                    overflow = TextOverflow.Clip,
-                    text = it.name,
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = TextUnit.Sp(8)
-                    )
-                )
+                    }
+                    Spacer(Modifier.preferredWidth(4.dp))
+                }
             }
-            Spacer(Modifier.preferredWidth(4.dp))
         }
     }
 }

@@ -4,7 +4,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.Box
+import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.setContent
 import dagger.hilt.android.AndroidEntryPoint
 

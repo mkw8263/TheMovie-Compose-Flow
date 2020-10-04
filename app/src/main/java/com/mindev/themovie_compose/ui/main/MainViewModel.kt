@@ -35,17 +35,17 @@ class MainViewModel @ViewModelInject constructor(
 
     private fun getMovies() = viewModelScope.launch {
         getMovieUseCase.invoke()
-            .onStart { _isMovieProgress.value = true }
-            .onCompletion { _isMovieProgress.value = false }
-            .catch { _isMovieProgress.value = false }
-            .collect { _movieList.value = it }
+            .onStart { _isMovieProgress.postValue(true) }
+            .onCompletion { _isMovieProgress.postValue(false) }
+            .catch { _isMovieProgress.postValue(false) }
+            .collect { _movieList.postValue(it) }
     }
 
     private fun getPerson() = viewModelScope.launch {
         getMoviePersonUseCase.invoke()
-            .onStart { _isMoviePersonProgress.value = true }
-            .onCompletion { _isMoviePersonProgress.value = false }
-            .catch { _isMoviePersonProgress.value = false }
-            .collect { _personList.value = it }
+            .onStart { _isMoviePersonProgress.postValue(true)}
+            .onCompletion { _isMoviePersonProgress.postValue(false) }
+            .catch { _isMoviePersonProgress.postValue(false) }
+            .collect { _personList.postValue(it)}
     }
 }
