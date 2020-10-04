@@ -14,7 +14,7 @@ TODO
 - [ ] darkTheme support in compose
 - [ ] navigator in compose
 - [ ] detail moview Activity UI
-- [ ] loading Progressbar
+- [x] loading Progressbar
 
 Screenshots
 ----------------- 
